@@ -1,0 +1,53 @@
+name: Verification
+
+on:
+  pull_request:
+    paths-ignore:
+      - '.vscode/**/*'
+      - '*.md'
+  push:
+    branches:
+      - main
+      - 'releases/*'
+    paths-ignore:
+      - '.vscode/**/*'
+      - '*.md'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: corepack enable
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      - name: Restore yarn cache
+        uses: actions/cache@v3
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: yarn-cache-folder-${{ hashFiles('**/yarn.lock', '.yarnrc.yml') }}
+          restore-keys: |
+            yarn-cache-folder-
+      - name: Fetch and link dependencies
+        run: yarn
+      - run: |
+          yarn lint
+          yarn test
+          yarn build
+  test-run:
+    name: Make a test run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run
+        uses: ./
+        with:
+          milliseconds: 500
