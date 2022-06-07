@@ -1,11 +1,12 @@
-name: 'Name of the action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: Fabriko
+description: Management of user permissions and Mapbox accounts for geographic information systems
+author: devgioele
+
 inputs:
-  milliseconds: # change this
+  config:
+    description: Path to the YAML config file
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+
 runs:
   using: 'node16'
   main: 'dist/index.js'

@@ -50,4 +50,10 @@ jobs:
       - name: Run
         uses: ./
         with:
-          milliseconds: 500
+          config: ./__tests__/mock-config.yml
+        env:
+          # To allow secrets to be called from within the config
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+          AZURE_TENANT_ID: ef5134e3-309b-4934-8a78-3a2e7046597d
+          AZURE_CLIENT_ID: 0462f392-75e2-494f-9673-9888eb6d9216
+          AZURE_CLIENT_SECRET: ${{ secrets.FABRIKO_AZURE_CLIENT_SECRET }}

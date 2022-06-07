@@ -1,0 +1,54 @@
+rotate-mapbox-tokens: true
+group-by:
+  - ConsVAT
+gis-files:
+  raster:
+    - name: temperature1
+      path: https://dlskultivas.blob.core.windows.net/prod/processed%20data/GIS%20Files/raster/t_1.geotiff
+    - name: temperature2
+      path: https://dlskultivas.blob.core.windows.net/prod/processed%20data/GIS%20Files/raster/t_2.geotiff
+    - name: altitude
+      path: https://dlskultivas.blob.core.windows.net/prod/processed%20data/GIS%20Files/raster/dtm_1.geotiff
+  vector:
+    - name: dataset
+      path: https://dlskultivas.blob.core.windows.net/prod/processed%20data/GIS%20Files/vector/dataset.geojsonl
+# Admin access tokens need the following scopes:
+# scopes:list
+# uploads:read
+# uploads:list
+# uploads:write
+# styles:list
+# tokens:read
+# tokens:write
+# datasets:list
+# datasets:write
+# tilesets:list
+# tilesets:read
+# tilesets:write
+mapbox-accounts:
+  - username: kultivas
+    admin-access-token: ${{ secrets.MAPBOX_ADMIN_KULTIVAS }}
+    # Match all groups
+    groups-regex: .*
+    gis-files:
+      raster:
+        - temperature1
+        - altitude
+      vector:
+        - dataset
+permissions:
+  - id: apple.nicoter-kanzi
+    description: Gives access to the Nicoter Kanzi apple
+  - id: apple.scilate-envy
+    description: Gives access to the Scilate Envy apple
+  - id: special.easter-egg
+    description: Gives access to easter eggs
+roles:
+  - id: kultivas
+    description: KULTIVAS developers
+    users-regex: .*@kultivas\\.eu
+    mapbox-account: kultivas
+    permissions:
+      - apple.nicoter-kanzi
+      - apple.scilate-envy
+      - special.easter-egg

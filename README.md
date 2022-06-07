@@ -1,112 +1,46 @@
 <p align="center">
-  <a href="https://github.com/devgioele/modern-typescript-action"><img alt="modern-typescript-action status" src="https://github.com/devgioele/modern-typescript-action/workflows/Verification/badge.svg"></a>
+  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
 </p>
 
-# Create a modern GitHub Action
+# Fabriko
 
-Use this template to bootstrap the creation of a GitHub Action :rocket:
-
-This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.  
-
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
-
-## Includes
-
-- [TypeScript](https://www.typescriptlang.org/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [yarn](https://yarnpkg.com/)
-- [esbuild](https://esbuild.github.io/)
-- [@swc/jest](https://swc.rs/docs/usage/jest)
-- [act](https://github.com/nektos/act)
-- [VS Code](https://code.visualstudio.com/) settings
-
-## Requirements
-
-- Some GNU+Linux OS such that commands like `rm` and `cp` work
-- Node.js `16 or higher`
-
-## Create an action from this template
-
-Click the `Use this Template` and provide the new repo details for your action
+A GitHub Action that manages user permissions and Mapbox accounts for geographic information systems
 
 ## Getting started
 
-Install the dependencies  
-```bash
-$ yarn
+### Install Node.js
+
+Install [version 16.10 or higher of Node.js](https://nodejs.org/en/download/). Use `node -v` to check your current version.
+
+### Enable corepack
+
+```sh
+corepack enable
 ```
 
-Install [act](https://github.com/nektos/act) to run GitHub Actions locally, which includes having Docker.
+### Install dependencies
 
-Test, build and run the action
-```bash
-$ yarn dev
+```sh
+yarn
 ```
 
-## Change action.yml
+## Notes
 
-The action.yml defines the inputs and output for your action.
+### Switching esbuild to SWC
 
-Update the action.yml with your name, description, inputs and outputs for your action.
+Once [swcpack](https://swc.rs/docs/usage/bundling) is ready, which it should be when SWC v2 is released, esbuild could be replaced with the SWC alternative. This reduces the total number of dependencies.
 
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
+### Convert GeoJSON to GeoJSONL
 
-## Change the Code
+Using `jq`:
 
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
-
-```javascript
-import * as core from '@actions/core';
-...
-
-async function run() {
-  try { 
-      ...
-  } 
-  catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-run()
+```sh
+jq --compact-output '.features[]' < input_file > output_file
 ```
 
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
+Replace `input_file` and `output_file` with your file paths.
 
-## Publish to a distribution branch
-
-Actions are run from GitHub repos so we will checkin the packed dist folder. 
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-$ npm run package
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
-```
-
-Your action is now published! :rocket: 
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
-## Validate
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
-
-```yaml
-uses: ./
-with:
-  milliseconds: 1000
-```
-
-See the [actions tab](https://github.com/actions/typescript-action/actions) for runs of this action! :rocket:
-
-## Usage
-
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
-
-## Debugging
+### Debugging
 
 `core.debug()` does only output if the debugging mode is enabled.
 
@@ -116,6 +50,34 @@ On **GitHub** you can enable it by setting the **secret** `ACTIONS_STEP_DEBUG` t
 If using **act**, you can enable it by passing the flag `--verbose`.
 _Note: This does not currently work. Follow [the related GitHub issue](https://github.com/nektos/act/issues/1006)._
 
-## Using secrets locally
+1. Install [act](https://github.com/nektos/act) to run GitHub Actions locally, which includes having Docker.
+2. Test, package and run the GitHub Action:
 
-The `.secrets` file is a [.env](https://www.dotenv.org/env) file placed in the root directory that is used to pass secrets to the GitHub Action while running it locally with act.
+```sh
+yarn dev
+```
+
+The `.secrets` file is used to pass secrets to the GitHub Action.
+
+### Publish to a distribution branch
+
+Actions are run from GitHub repos so we will checkin the packed dist folder.
+
+Then run [ncc](https://github.com/zeit/ncc) and push the results:
+
+```bash
+$ yarn build
+$ git add dist
+$ git commit -a -m "prod dependencies"
+$ git push origin releases/v1
+```
+
+Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
+
+Your action is now published! :rocket:
+
+See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
+
+### Usage:
+
+After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
