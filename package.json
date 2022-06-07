@@ -1,8 +1,8 @@
 {
-  "name": "modern-typescript-action",
-  "version": "0.0.0",
+  "name": "fabriko",
+  "version": "1.0.3",
   "private": true,
-  "description": "Modern GitHub Action template",
+  "description": "Management of user permissions and Mapbox accounts for geographic information systems",
   "main": "src/index.ts",
   "scripts": {
     "lint": "eslint '**/*.ts' --cache --fix",
