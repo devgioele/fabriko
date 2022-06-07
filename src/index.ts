@@ -51,7 +51,7 @@ async function run(): Promise<void> {
       mapboxAccesses
     )
 
-    cleanupUploads()
+    await cleanupUploads()
 
     core.info('Done!')
   } catch (error) {

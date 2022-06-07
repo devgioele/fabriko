@@ -7,4 +7,4 @@ export type Errors = {
   amount: number
 }
 
-export type ResultWithCleanup<T> = [T, () => Promise<void>]
+export type ResultWithCleanup<T> = [result: T, cleanup: () => Promise<void>]

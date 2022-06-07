@@ -185,7 +185,7 @@ export class MapboxAccount {
    * to the configuration. */
   async uploadGisFiles(
     files: GisFilesConfig
-  ): Promise<[tilesets: Tilesets, cleanup: () => Promise<void>]> {
+  ): Promise<ResultWithCleanup<Tilesets>> {
     const filesToUpload = this.myFiles(files)
     this.logInfo(
       `Files to upload to the Mapbox account '${
@@ -195,7 +195,7 @@ export class MapboxAccount {
     const [uploadedTilesets, currentVersion] = await this.getUploadedTilesets()
     const oldVersion = currentVersion - 1
     const newVersion = currentVersion + 1
-    this.logDebug('Uploading...')
+    this.logInfo('Uploading...')
     const uploadRasterFiles = this.uploadFiles(filesToUpload.raster, newVersion)
     const uploadVectorFiles = this.uploadFiles(filesToUpload.vector, newVersion)
     const [rasterTilesets, vectorTilesets] = await Promise.all([
@@ -262,15 +262,15 @@ export default class Mapbox {
   async upload(
     files: GisFilesConfig
   ): Promise<ResultWithCleanup<MapboxAccess[]>> {
-    const results: Array<ResultWithCleanup<MapboxAccess>> = await Promise.all(
-      this.accounts.map(async account => {
-        const [uploadedTilesets, cleanupUpload] = await account.uploadGisFiles(
-          files
-        )
-        return [account.getAccessData(uploadedTilesets), cleanupUpload]
-      })
-    )
-    return collectResultsWithCleanup(results)
+    const resultsWithCleanup: Array<ResultWithCleanup<MapboxAccess>> =
+      await Promise.all(
+        this.accounts.map(async account => {
+          const [uploadedTilesets, cleanupUpload] =
+            await account.uploadGisFiles(files)
+          return [account.getAccessData(uploadedTilesets), cleanupUpload]
+        })
+      )
+    return collectResultsWithCleanup(resultsWithCleanup)
   }
 
   async rotateUserAccessTokens(): Promise<void> {

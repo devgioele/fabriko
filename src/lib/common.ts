@@ -87,14 +87,15 @@ export const compileErrors = (
   )
 
 export const collectResultsWithCleanup = <T>(
-  ResultWithCleanups: Array<ResultWithCleanup<T>>
+  resultsWithCleanup: Array<ResultWithCleanup<T>>
 ): ResultWithCleanup<T[]> => {
   // Form a cleanup function that calls all the cleanup functions
   const cleanupAll = async (): Promise<void> => {
-    await Promise.all(ResultWithCleanups.map(wc => wc[1]))
+    const cleanups = resultsWithCleanup.map(async rwc => await rwc[1]())
+    await Promise.all(cleanups)
   }
   // Collect values
-  const results = ResultWithCleanups.map(wc => wc[0])
+  const results = resultsWithCleanup.map(rwc => rwc[0])
   return [results, cleanupAll]
 }
 
