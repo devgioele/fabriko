@@ -59,7 +59,9 @@ _Note: This does not currently work. Follow [the related GitHub issue](https://g
 yarn dev
 ```
 
-The `.secrets` file is used to pass secrets to the GitHub Action.
+#### Using secrets locally
+
+The `.secrets` file is a [.env](https://www.dotenv.org/env) file placed in the root directory that is used to pass secrets to the GitHub Action while running it locally with act.
 
 ### Publish to a distribution branch
 
@@ -80,6 +82,6 @@ Your action is now published! :rocket:
 
 See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
 
-### Usage:
+### Usage
 
 After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
