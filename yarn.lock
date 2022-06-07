@@ -3964,6 +3964,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fabriko@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "fabriko@workspace:."
+  dependencies:
+    "@actions/core": 1.8.2
+    "@aws-sdk/client-s3": 3.105.0
+    "@azure/identity": 2.0.4
+    "@devgioele/winged": 7.0.6
+    "@swc/core": 1.2.197
+    "@swc/jest": 0.2.21
+    "@types/jest": 28.1.1
+    "@types/lodash": 4.14.182
+    "@types/node": 17.0.40
+    axios: 0.27.2
+    esbuild: 0.14.42
+    eslint: 8.17.0
+    eslint-config-prettier: 8.5.0
+    eslint-plugin-github: 4.3.6
+    eslint-plugin-jest: 26.5.3
+    eslint-plugin-prettier: 4.0.0
+    jest: 28.1.1
+    js-yaml: 4.1.0
+    lodash: 4.17.21
+    prettier: 2.6.2
+    typescript: 4.7.3
+    yaml: 2.1.1
+    zod: 3.17.3
+  languageName: unknown
+  linkType: soft
+
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -5740,36 +5770,6 @@ __metadata:
   checksum: a96865108c6c3b1b8e1d5e9f11843de1e077e57737602de1b82030815f311be11f96f09cce59bd5b903d0b29834733e5313f9301e3ed6d6f6fba2eae0df4298f
   languageName: node
   linkType: hard
-
-"modern-typescript-action@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "modern-typescript-action@workspace:."
-  dependencies:
-    "@actions/core": 1.8.2
-    "@aws-sdk/client-s3": 3.105.0
-    "@azure/identity": 2.0.4
-    "@devgioele/winged": 7.0.6
-    "@swc/core": 1.2.197
-    "@swc/jest": 0.2.21
-    "@types/jest": 28.1.1
-    "@types/lodash": 4.14.182
-    "@types/node": 17.0.40
-    axios: 0.27.2
-    esbuild: 0.14.42
-    eslint: 8.17.0
-    eslint-config-prettier: 8.5.0
-    eslint-plugin-github: 4.3.6
-    eslint-plugin-jest: 26.5.3
-    eslint-plugin-prettier: 4.0.0
-    jest: 28.1.1
-    js-yaml: 4.1.0
-    lodash: 4.17.21
-    prettier: 2.6.2
-    typescript: 4.7.3
-    yaml: 2.1.1
-    zod: 3.17.3
-  languageName: unknown
-  linkType: soft
 
 "ms@npm:2.0.0":
   version: 2.0.0
