@@ -24,11 +24,13 @@ corepack enable
 yarn
 ```
 
+### Test and build package
+
+```sh
+yarn test && yarn build
+```
+
 ## Notes
-
-### Switching esbuild to SWC
-
-Once [swcpack](https://swc.rs/docs/usage/bundling) is ready, which it should be when SWC v2 is released, esbuild could be replaced with the SWC alternative. This reduces the total number of dependencies.
 
 ### Convert GeoJSON to GeoJSONL
 
