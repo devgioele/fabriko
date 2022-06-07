@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/devgioele/modern-typescript-action"><img alt="modern-typescript-action status" src="https://github.com/devgioele/modern-typescript-action/workflows/Verification/badge.svg"></a>
+  <a href="https://github.com/devgioele/fabriko/actions/workflows/verification.yml"><img alt="fabriko verification status" src="https://github.com/devgioele/modern-typescript-action/workflows/Verification/badge.svg"></a>
 </p>
 
 # Fabriko
