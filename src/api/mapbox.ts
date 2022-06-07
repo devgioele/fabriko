@@ -151,9 +151,9 @@ const triggerTilesetGeneration = async (
  * @see https://docs.mapbox.com/api/maps/uploads/#retrieve-upload-status */
 const uploadIsComplete = async (
   uploadId: string,
-  tilesetName: string,
   username: string,
-  adminAccessToken: string
+  adminAccessToken: string,
+  prefix: string
 ): Promise<void> => {
   const statusFetcher = async (): Promise<MapboxUploadStatus> => {
     const { data } = await axios.get<MapboxUploadStatus>(
@@ -172,7 +172,7 @@ const uploadIsComplete = async (
       const newProgress = Math.round(status.progress * 100)
       if (newProgress !== lastProgress) {
         lastProgress = newProgress
-        core.info(`[${tilesetName}] ${newProgress}%`)
+        core.info(`[${prefix}] ${newProgress}%`)
       }
       return status.progress
     }
@@ -207,7 +207,12 @@ export const upload = async (
   )
 
   core.debug(`Waiting until the upload is complete...`)
-  await uploadIsComplete(uploadId, tilesetName, username, adminAccessToken)
+  await uploadIsComplete(
+    uploadId,
+    username,
+    adminAccessToken,
+    `${username} - ${tilesetName}`
+  )
   return {
     id: tilesetId,
     name: tilesetName
