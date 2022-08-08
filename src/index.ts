@@ -51,6 +51,7 @@ async function run(): Promise<void> {
       mapboxAccesses
     )
 
+    // Remove old files from Mapbox
     await cleanupUploads()
 
     core.info('Done!')
