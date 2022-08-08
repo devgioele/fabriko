@@ -79,7 +79,7 @@ const interpolateSecrets = (config: Config): Config => {
   const secretsContext: StringDictionary = JSON.parse(
     loadEnvVar('SECRETS_CONTEXT')
   )
-  const customizeer = <T>(value: T): T | undefined => {
+  const customizer = <T>(value: T): T | undefined => {
     if (typeof value === 'string') {
       const matches = [...value.matchAll(/\${{ ?secrets\.([\w_]+) ?}}/gi)]
       const firstMatch = matches[0]
@@ -90,7 +90,7 @@ const interpolateSecrets = (config: Config): Config => {
       }
     }
   }
-  return cloneDeepWith(config, customizeer)
+  return cloneDeepWith(config, customizer)
 }
 
 export const parseConfig = (path: string): Config => {
