@@ -82,26 +82,34 @@ const reduceConfig = (
   maxVectorFiles?: number
 ): Config => {
   // Remove roles
-  config.roles = config.roles.slice(0, maxRoles)
-  /* Remove unused Mapbox accounts,
-   * which are accounts not referenced by any role
-   */
-  config.mapboxAccounts = config.mapboxAccounts.filter(account =>
-    config.roles.find(role => role.mapboxAccount === account.username)
-  )
+  if (maxRoles && maxRoles <= config.roles.length) {
+    config.roles = config.roles.slice(0, maxRoles)
+    /* Remove unused Mapbox accounts,
+     * which are accounts not referenced by any role
+     */
+    config.mapboxAccounts = config.mapboxAccounts.filter(account =>
+      config.roles.find(role => role.mapboxAccount === account.username)
+    )
+  }
   // Remove raster files
-  config.gisFiles.raster = config.gisFiles.raster.slice(0, maxRasterFiles)
+  if (maxRasterFiles && maxRasterFiles <= config.gisFiles.raster.length) {
+    config.gisFiles.raster = config.gisFiles.raster.slice(0, maxRasterFiles)
+    // Remove from Mapbox accounts raster files that were removed
+    for (const account of config.mapboxAccounts) {
+      account.gisFiles.raster = account.gisFiles.raster.filter(accRaster =>
+        config.gisFiles.raster.find(raster => raster.name === accRaster)
+      )
+    }
+  }
   // Remove vector files
-  config.gisFiles.vector = config.gisFiles.vector.slice(0, maxVectorFiles)
-  for (const account of config.mapboxAccounts) {
-    // Remove raster files from Mapbox accounts
-    account.gisFiles.raster = account.gisFiles.raster.filter(accRaster =>
-      config.gisFiles.raster.find(raster => raster.name === accRaster)
-    )
-    // Remove vector files from Mapbox accounts
-    account.gisFiles.vector = account.gisFiles.vector.filter(accVector =>
-      config.gisFiles.vector.find(vector => vector.name === accVector)
-    )
+  if (maxVectorFiles && maxVectorFiles <= config.gisFiles.vector.length) {
+    config.gisFiles.vector = config.gisFiles.vector.slice(0, maxVectorFiles)
+    // Remove from Mapbox accounts vector files that were removed
+    for (const account of config.mapboxAccounts) {
+      account.gisFiles.vector = account.gisFiles.vector.filter(accVector =>
+        config.gisFiles.vector.find(vector => vector.name === accVector)
+      )
+    }
   }
   return config
 }
