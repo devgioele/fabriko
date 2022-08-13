@@ -11,7 +11,7 @@ on:
 jobs:
   benchmark-fabriko:
       name: Benchmark Fabriko
-      if: ${{ github.event.workflow_run.conclusion == 'success' }}
+      if: github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch'
       strategy:
         fail-fast: true
         # One job at a time, such that jobs do not compete over hosting resources
