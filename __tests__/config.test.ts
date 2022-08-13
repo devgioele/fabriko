@@ -4,8 +4,7 @@ import { parseConfig } from '../src/input'
 
 test('load config', () => {
   const configPath = path.resolve(__dirname, './mock-config.yml')
-  // Set secrets context
-  process.env['SECRETS_CONTEXT'] = '{}'
-  const config = parseConfig(configPath)
+  const secrets = {}
+  const config = parseConfig(configPath, secrets)
   expect(config?.groupBy).toContain('ConsVAT')
 })

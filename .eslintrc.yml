@@ -13,6 +13,7 @@ parserOptions:
 ignorePatterns:
   - 'node_modules'
   - 'dist'
+  - 'benchmark/mock-api'
   # Configuration files in the root directory
   - '*.js'
 rules:

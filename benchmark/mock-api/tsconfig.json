@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    // "baseUrl": "./",
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "lib": ["esnext"]
+  },
+  "exclude": ["./test/**/*"]
+}

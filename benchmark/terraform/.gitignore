@@ -1,0 +1,6 @@
+# Terraform state
+terraform.tfstate
+terraform.tfstate.backup
+
+# Terraform providers
+.terraform/providers

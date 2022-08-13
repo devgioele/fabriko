@@ -6,6 +6,21 @@ inputs:
   config:
     description: Path to the YAML config file
     required: true
+  store-base-url:
+    description: Base URL used for the store API
+    required: true
+  azure-tenant-id:
+    description: ID of the Azure tenant
+    required: true
+  azure-client-id:
+    description: ID of the Azure client
+    required: true
+  azure-client-secret:
+    description: Secret for the Azure client
+    required: true
+  secrets-context:
+    description: The GitHub secrets context such that secrets can be accessed from within the Fabriko config
+    required: true
 
 runs:
   using: 'node16'

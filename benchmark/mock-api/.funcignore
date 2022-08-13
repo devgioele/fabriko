@@ -1,0 +1,4 @@
+**/*
+!dist
+!host.json
+!func*/function.json

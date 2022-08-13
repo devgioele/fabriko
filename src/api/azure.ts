@@ -1,6 +1,5 @@
 import { ClientSecretCredential } from '@azure/identity'
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { loadEnvVar } from '../lib/env'
 import path from 'path'
 import { promisify } from 'util'
 import { pipeline } from 'stream'
@@ -10,34 +9,27 @@ import axios from 'axios'
 import * as core from '@actions/core'
 import { decodeJWT } from '../lib/common'
 
-const tenantId = loadEnvVar('AZURE_TENANT_ID')
-const clientId = loadEnvVar('AZURE_CLIENT_ID')
-const clientSecret = loadEnvVar('AZURE_CLIENT_SECRET')
-
-/* The following articles explains that client credentials flows (we are
-supposedly using one) cannot use scopes. By passing the client ID as the
-scope, we requiest the access token with no consent and all claims.
-https://damienbod.com/2020/10/01/implement-azure-ad-client-credentials-flow-using-client-certificates-for-service-apis
-
-If you find the official Microsoft documentation that explains this,
-please add it here.
-*/
-const scopes = [`${clientId}/.default`, 'https://storage.azure.com/.default']
-
 export enum Scope {
   FUNCTIONS = 0,
   BLOB_STORAGE = 1
 }
-
-const getScope = (scope: Scope): string => scopes[scope]
 
 const pipelineAsync = promisify(pipeline)
 
 export class BlobStorageClient {
   azure: AzureClient
 
-  static async build(): Promise<BlobStorageClient> {
-    const azureClient = await AzureClient.build(Scope.BLOB_STORAGE)
+  static async build(
+    tenantId: string,
+    clientId: string,
+    clientSecret: string
+  ): Promise<BlobStorageClient> {
+    const azureClient = await AzureClient.build(
+      Scope.BLOB_STORAGE,
+      tenantId,
+      clientId,
+      clientSecret
+    )
     return new BlobStorageClient(azureClient)
   }
 
@@ -75,8 +67,19 @@ export class BlobStorageClient {
 export class FunctionsClient {
   azure: AzureClient
 
-  static async build(): Promise<FunctionsClient> {
-    const azureClient = await AzureClient.build(Scope.FUNCTIONS)
+  static async build(
+    tenantId: string,
+    clientId: string,
+    clientSecret: string,
+    baseUrl?: string
+  ): Promise<FunctionsClient> {
+    const azureClient = await AzureClient.build(
+      Scope.FUNCTIONS,
+      tenantId,
+      clientId,
+      clientSecret,
+      baseUrl
+    )
     return new FunctionsClient(azureClient)
   }
 
@@ -87,33 +90,56 @@ export class FunctionsClient {
 
 class AzureClient {
   token: string
+  baseUrl?: string
 
-  static async build(scope: Scope): Promise<AzureClient> {
+  static async build(
+    scope: Scope,
+    tenantId: string,
+    clientId: string,
+    clientSecret: string,
+    baseUrl?: string
+  ): Promise<AzureClient> {
     const credential = new ClientSecretCredential(
       tenantId,
       clientId,
       clientSecret
     )
-    const token = await credential.getToken(getScope(scope))
+
+    /* The following articles explains that client credentials flows (we are
+    supposedly using one) cannot use scopes. By passing the client ID as the
+    scope, we requiest the access token with no consent and all claims.
+    https://damienbod.com/2020/10/01/implement-azure-ad-client-credentials-flow-using-client-certificates-for-service-apis
+
+    If you find the official Microsoft documentation that explains this, please add it here.
+    */
+    const scopes = [
+      `${clientId}/.default`,
+      'https://storage.azure.com/.default'
+    ]
+
+    const token = await credential.getToken(scopes[scope])
     // Print token
     if (core.isDebug()) {
       const payload = decodeJWT(token.token)
       core.debug(`Token = ${token.token}`)
       core.debug(`Decoded payload of token = ${payload}`)
     }
-    return new AzureClient(token.token)
+    return new AzureClient(token.token, baseUrl)
   }
 
-  constructor(token: string) {
+  constructor(token: string, baseUrl?: string) {
     this.token = token
+    this.baseUrl = baseUrl
   }
+
+  compUrl = (url: string): string => `${this.baseUrl || ''}${url}`
 
   async get<T = unknown, D = unknown>(
     url: string,
     config?: AxiosRequestConfig<D>
   ): Promise<T> {
     const { data } = await axios.get<T>(
-      url,
+      this.compUrl(url),
       axiosAuthConfig(this.token, config)
     )
     return data
@@ -125,7 +151,7 @@ class AzureClient {
     config?: AxiosRequestConfig<D>
   ): Promise<R> {
     return await axios.put<T, R, D>(
-      url,
+      this.compUrl(url),
       data,
       axiosAuthConfig(this.token, config)
     )

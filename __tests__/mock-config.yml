@@ -3,15 +3,13 @@ group-by:
   - ConsVAT
 gis-files:
   raster:
-    - name: temperature1
-      path: https://dlskultivas.blob.core.windows.net/prod/processed%20data/GIS%20Files/raster/t_1.geotiff
-    - name: temperature2
-      path: https://dlskultivas.blob.core.windows.net/prod/processed%20data/GIS%20Files/raster/t_2.geotiff
+    - name: temperature
+      path: 'some url'
     - name: altitude
-      path: https://dlskultivas.blob.core.windows.net/prod/processed%20data/GIS%20Files/raster/dtm_1.geotiff
+      path: 'some url'
   vector:
     - name: dataset
-      path: https://dlskultivas.blob.core.windows.net/prod/processed%20data/GIS%20Files/vector/dataset.geojsonl
+      path: 'some url'
 # Admin access tokens need the following scopes:
 # scopes:list
 # uploads:read
@@ -26,14 +24,32 @@ gis-files:
 # tilesets:read
 # tilesets:write
 mapbox-accounts:
-  - username: kultivas
-    admin-access-token: ${{ secrets.MAPBOX_ADMIN_KULTIVAS }}
+  - username: devgioele
+    admin-access-token: ${{ secrets.MAPBOX_ADMIN_DEVGIOELE }}
     # Match all groups
     groups-regex: .*
     gis-files:
       raster:
-        - temperature1
+        - temperature
         - altitude
+      vector:
+        - dataset
+  - username: devgioele2
+    admin-access-token: ${{ secrets.MAPBOX_ADMIN_DEVGIOELE2 }}
+    # Match all groups
+    groups-regex: .*
+    gis-files:
+      raster:
+        - altitude
+      vector:
+        - dataset
+  - username: devgioele3
+    admin-access-token: ${{ secrets.MAPBOX_ADMIN_DEVGIOELE3 }}
+    # Match all groups
+    groups-regex: .*
+    gis-files:
+      raster:
+        - temperature
       vector:
         - dataset
 permissions:
@@ -41,14 +57,24 @@ permissions:
     description: Gives access to the Nicoter Kanzi apple
   - id: apple.scilate-envy
     description: Gives access to the Scilate Envy apple
-  - id: special.easter-egg
-    description: Gives access to easter eggs
 roles:
-  - id: kultivas
-    description: KULTIVAS developers
-    users-regex: .*@kultivas\\.eu
-    mapbox-account: kultivas
+  - id: role1
+    description: User role 1
+    users-regex: .*@role1\\.eu
+    mapbox-account: devgioele
     permissions:
       - apple.nicoter-kanzi
       - apple.scilate-envy
-      - special.easter-egg
+  - id: role2
+    description: User role 2
+    users-regex: test2@gmail\\.com
+    mapbox-account: devgioele2
+    permissions:
+      - apple.nicoter-kanzi
+  - id: role3
+    description: User role 3
+    users-regex: test3@gmail\\.com
+    mapbox-account: devgioele3
+    permissions:
+      - apple.nicoter-kanzi
+      - apple.scilate-envy

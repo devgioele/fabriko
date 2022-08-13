@@ -3,8 +3,6 @@ import HttpStatusCode from './lib/httpStatusCode'
 import type { Permission, Role } from './types/input'
 import type { MapboxAccess } from './types/mapbox'
 
-const baseUrl = 'https://func-kultivas-prod.azurewebsites.net/api'
-
 export const updateRolesMapboxAccess = async (
   client: FunctionsClient,
   roles: Role[],
@@ -16,7 +14,7 @@ export const updateRolesMapboxAccess = async (
     permissions,
     mapboxAccesses: accesses
   }
-  const response = await client.azure.put(`${baseUrl}/roles`, requestBody)
+  const response = await client.azure.put('/roles', requestBody)
   if (response.status !== HttpStatusCode.OK) {
     throw new Error(`Unexpected response: ${response.status}`)
   }

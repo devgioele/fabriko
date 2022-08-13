@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "format": "prettier --write '**/*.ts'",
+    "lint": "eslint '**/*.ts' --fix --cache",
+    "build": "rm -rf dist && tsc",
+    "watch": "yarn build -w",
+    "dev": "yarn build && func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "devDependencies": {
+    "@azure/functions": "^3.0.0",
+    "@types/node": "^17.0.31",
+    "@typescript-eslint/parser": "^5.22.0",
+    "eslint": "^8.15.0",
+    "eslint-plugin-github": "^4.3.7",
+    "eslint-plugin-jest": "^26.1.5",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.0.0"
+  },
+  "packageManager": "yarn@3.2.0"
+}

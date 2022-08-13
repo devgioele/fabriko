@@ -1,0 +1,32 @@
+name: Benchmark
+
+on:
+  workflow_dispatch:
+
+jobs:
+  benchmark-fabriko:
+      name: Benchmark Fabriko
+      strategy:
+        fail-fast: true
+        # One job at a time, such that jobs do not compete over hosting resources
+        max-parallel: 1
+        matrix:
+          roles: [1, 2, 3]
+          raster-files: [1, 2, 3, 4]
+          vector-files: [1, 2, 3, 4]
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        # TODO: Duplicate action once it works for a warm up
+        - name: Measure performance
+          uses: ./
+          with:
+            config: ./benchmark/fabriko-config.yml
+            store-base-url: https://fabriko-mock-api.azurewebsites.net/api
+            azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+            azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
+            azure-client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+            secrets-context: ${{ toJson(secrets) }}
+            max-roles: ${{ matrix.roles }}
+            max-raster-files: ${{ matrix.raster-files }}
+            max-vector-files: ${{ matrix.vector-files }}

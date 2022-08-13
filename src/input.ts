@@ -2,9 +2,8 @@ import { readFileSync } from 'fs'
 import type { Config, Input } from './types/input'
 import { configSchema } from './types/input'
 import YAML from 'yaml'
-import { camelizeKebab, compileErrors } from './lib/common'
+import { camelizeKebab, compileErrors, parseNumber } from './lib/common'
 import * as core from '@actions/core'
-import { loadEnvVar } from './lib/env'
 import { cloneDeepWith } from 'lodash'
 import type { StringDictionary } from './types/common'
 
@@ -72,13 +71,47 @@ const validConfig = (config: unknown): Config => {
   return c
 }
 
-/** Interpolates secrets contained by the given config with the secrets provided
- * through the environment variable `SECRETS_CONTEXT`.
+/** Removes settings from the given config, creating a subset of the config.
+ * Useful for benchmarking purposes where multiple runs require a slightly different config.
+ * For example, if 3 roles are to be taken out of 8 roles, the last 5 ones are removed.
  */
-const interpolateSecrets = (config: Config): Config => {
-  const secretsContext: StringDictionary = JSON.parse(
-    loadEnvVar('SECRETS_CONTEXT')
+const reduceConfig = (
+  config: Config,
+  maxRoles?: number,
+  maxRasterFiles?: number,
+  maxVectorFiles?: number
+): Config => {
+  // Remove roles
+  config.roles = config.roles.slice(0, maxRoles)
+  /* Remove unused Mapbox accounts,
+   * which are accounts not referenced by any role
+   */
+  config.mapboxAccounts = config.mapboxAccounts.filter(account =>
+    config.roles.find(role => role.mapboxAccount === account.username)
   )
+  // Remove raster files
+  config.gisFiles.raster = config.gisFiles.raster.slice(0, maxRasterFiles)
+  // Remove vector files
+  config.gisFiles.vector = config.gisFiles.vector.slice(0, maxVectorFiles)
+  for (const account of config.mapboxAccounts) {
+    // Remove raster files from Mapbox accounts
+    account.gisFiles.raster = account.gisFiles.raster.filter(accRaster =>
+      config.gisFiles.raster.find(raster => raster.name === accRaster)
+    )
+    // Remove vector files from Mapbox accounts
+    account.gisFiles.vector = account.gisFiles.vector.filter(accVector =>
+      config.gisFiles.vector.find(vector => vector.name === accVector)
+    )
+  }
+  return config
+}
+
+/** Interpolates secrets in the given config using the provided secrets.
+ */
+const interpolateSecrets = (
+  config: Config,
+  secrets: StringDictionary
+): Config => {
   const customizer = <T>(value: T): T | undefined => {
     if (typeof value === 'string') {
       const matches = [...value.matchAll(/\${{ ?secrets\.([\w_]+) ?}}/gi)]
@@ -86,21 +119,47 @@ const interpolateSecrets = (config: Config): Config => {
       if (firstMatch) {
         // Second group
         const secretName = firstMatch[1]
-        return secretsContext[secretName] as T
+        return secrets[secretName] as T
       }
     }
   }
   return cloneDeepWith(config, customizer)
 }
 
-export const parseConfig = (path: string): Config => {
+export const parseConfig = (
+  path: string,
+  secrets: StringDictionary,
+  maxRoles?: number,
+  maxRasterFiles?: number,
+  maxVectorFiles?: number
+): Config => {
   const configFile = readFileSync(path, 'utf8')
   const parsed = YAML.parse(configFile)
   const camelized = camelizeKebab(parsed)
-  const config = validConfig(camelized)
-  return interpolateSecrets(config)
+  let config = validConfig(camelized)
+  config = reduceConfig(config, maxRoles, maxRasterFiles, maxVectorFiles)
+  return interpolateSecrets(config, secrets)
 }
 
-export const parseInput = (): Input => ({
-  config: parseConfig(core.getInput('config'))
-})
+export const parseInput = (): Input => {
+  const input = {
+    storeBaseUrl: core.getInput('store-base-url'),
+    azureTenantId: core.getInput('azure-tenant-id'),
+    azureClientId: core.getInput('azure-client-id'),
+    azureClientSecret: core.getInput('azure-client-secret'),
+    secrets: JSON.parse(core.getInput('secrets-context')),
+    maxRoles: parseNumber(core.getInput('max-roles')),
+    maxRasterFiles: parseNumber(core.getInput('max-raster-files')),
+    maxVectorFiles: parseNumber(core.getInput('max-vector-files'))
+  }
+  return {
+    config: parseConfig(
+      core.getInput('config'),
+      input.secrets,
+      input.maxRoles,
+      input.maxRasterFiles,
+      input.maxVectorFiles
+    ),
+    ...input
+  }
+}

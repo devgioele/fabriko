@@ -59,6 +59,48 @@ _Note: This does not currently work. Follow [the related GitHub issue](https://g
 yarn dev
 ```
 
+## Benchmarking
+
+### Procuring infrastructure
+
+Use the terraform files to setup the Azure resources required for a successful Fabriko run.
+
+You can follow the (HashiCorp guide)[https://learn.hashicorp.com/tutorials/terraform/azure-build?in=terraform/azure-get-started]. The main points are: 
+- Install the Azure CLI
+- Create a Service Principal
+- Export the secrets
+- Run `terraform init`
+- Run `terraform plan`
+- Run `terraform apply`
+
+### Deploying Azure Functions as mock API
+
+Install the **Azure CLI** if you haven't already.
+
+Install the **Azure Functions Core Tools**.
+
+Run the following inside the mock-api directory.
+
+Build the Azure Functions project:
+```
+yarn build
+```
+Deploy the Azure Functions project:
+```
+func azure functionapp publish fabriko-mock-api
+```
+
+### Give service principal access to Azure Storage
+
+Azure's RBAC (Role-Based Authentication Access Control) is used to received the authorization to download block blobs from the created Azure Storage account.
+
+For simplicity, the same service principal used by Terraform is also used to access Azure Storage.
+
+Follow [Microsoft's guide](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current#step-1-identify-the-needed-scope) to assign the `Storage Blob Data Reader` role definition to the service principal. It gives the following permissions:
+- Microsoft.Storage/storageAccounts/blobServices/containers/read
+- Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action
+- "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read
+
 #### Using secrets locally
 
 The `.secrets` file is a [.env](https://www.dotenv.org/env) file placed in the root directory that is used to pass secrets to the GitHub Action while running it locally with act.

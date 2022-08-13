@@ -10,9 +10,20 @@ async function run(): Promise<void> {
     const input = parseInput()
     const { config } = input
 
+    core.info(`Config = ${JSON.stringify(config, 2)}`)
+
     core.info('Authenticating for Azure resources...')
-    const functionsClient = await FunctionsClient.build()
-    const blobStorageClient = await BlobStorageClient.build()
+    const functionsClient = await FunctionsClient.build(
+      input.azureTenantId,
+      input.azureClientId,
+      input.azureClientSecret,
+      input.storeBaseUrl
+    )
+    const blobStorageClient = await BlobStorageClient.build(
+      input.azureTenantId,
+      input.azureClientId,
+      input.azureClientSecret
+    )
 
     core.info('Accessing Mapbox accounts...')
     const mapbox = await Mapbox.build(config.mapboxAccounts)

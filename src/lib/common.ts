@@ -5,6 +5,18 @@ import type {
   StringDictionary
 } from '../types/common'
 
+/** Converts the given string to a number. Returns the number or undefined, if `parseInt` is unsuccessful. */
+export const parseNumber = (
+  str: string,
+  radix?: number
+): number | undefined => {
+  const parsed = parseInt(str, radix)
+  if (isNaN(parsed)) {
+    return undefined
+  }
+  return parsed
+}
+
 /** Returns the decoded payload of the given JWT. */
 export const decodeJWT = (jwt: string): string => {
   const payload = jwt.split('.')[1]

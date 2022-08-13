@@ -64,4 +64,12 @@ export type Config = z.infer<typeof configSchema>
 
 export type Input = {
   config: Config
+  storeBaseUrl: string
+  azureTenantId: string
+  azureClientId: string
+  azureClientSecret: string
+  secrets: object
+  maxRoles?: number
+  maxRasterFiles?: number
+  maxVectorFiles?: number
 }

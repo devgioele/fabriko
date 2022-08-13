@@ -1,7 +1,6 @@
 {
   "name": "fabriko",
-  "version": "1.0.3",
-  "private": true,
+  "version": "1.0.4",
   "description": "Management of user permissions and Mapbox accounts for geographic information systems",
   "main": "src/index.ts",
   "scripts": {
@@ -12,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devgioele/modern-typescript-action.git"
+    "url": "git+https://github.com/devgioele/fabriko.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "",
+  "author": "devgioele",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "1.8.2",
