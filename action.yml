@@ -21,6 +21,15 @@ inputs:
   secrets-context:
     description: The GitHub secrets context such that secrets can be accessed from within the Fabriko config
     required: true
+  max-roles:
+    description: The maximum number of roles loaded from the config.
+    required: false
+  max-raster-files:
+    description: The maximum number of raster files loaded from the config.
+    required: false
+  max-vector-files:
+    description: The maximum number of raster files loaded from the config.
+    required: false
 
 runs:
   using: 'node16'
