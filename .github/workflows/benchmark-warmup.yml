@@ -1,0 +1,23 @@
+name: Benchmark Warmup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  benchmark-fabriko:
+      name: Warmup Fabriko
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: Run Fabriko
+          uses: ./
+          with:
+            config: ./benchmark/fabriko-config.yml
+            store-base-url: https://fabriko-mock-api.azurewebsites.net/api
+            azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+            azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
+            azure-client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+            secrets-context: ${{ toJson(secrets) }}
+            max-roles: 1
+            max-raster-files: 1
+            max-vector-files: 1

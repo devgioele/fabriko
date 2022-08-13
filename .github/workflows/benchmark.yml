@@ -2,23 +2,28 @@ name: Benchmark
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Benchmark Warmup
+    types:
+      - completed
 
 jobs:
   benchmark-fabriko:
       name: Benchmark Fabriko
+      if: ${{ github.event.workflow_run.conclusion == 'success' }}
       strategy:
         fail-fast: true
         # One job at a time, such that jobs do not compete over hosting resources
         max-parallel: 1
         matrix:
-          roles: [1, 2] #, 3]
-          raster-files: [1, 2] #, 3, 4]
-          vector-files: [1, 2] #, 3, 4]
+          roles: [1, 2, 3]
+          raster-files: [1, 2, 3, 4]
+          vector-files: [1, 2, 3, 4]
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
-        # TODO: Duplicate action once it works for a warm up
-        - name: Measure performance
+        - name: Run Fabriko
           uses: ./
           with:
             config: ./benchmark/fabriko-config.yml
