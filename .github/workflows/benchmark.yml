@@ -11,9 +11,9 @@ jobs:
         # One job at a time, such that jobs do not compete over hosting resources
         max-parallel: 1
         matrix:
-          roles: [1, 2, 3]
-          raster-files: [1, 2, 3, 4]
-          vector-files: [1, 2, 3, 4]
+          roles: [1, 2] #, 3]
+          raster-files: [1, 2] #, 3, 4]
+          vector-files: [1, 2] #, 3, 4]
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
