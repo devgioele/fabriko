@@ -10,7 +10,7 @@ async function run(): Promise<void> {
     const input = parseInput()
     const { config } = input
 
-    core.info(`Config = ${JSON.stringify(config, 2)}`)
+    core.info(`Loaded config = ${JSON.stringify(config, undefined, 2)}`)
 
     core.info('Authenticating for Azure resources...')
     const functionsClient = await FunctionsClient.build(
