@@ -29,7 +29,7 @@
     "axios": "0.27.2",
     "lodash": "4.17.21",
     "yaml": "2.1.1",
-    "zod": "3.17.3"
+    "zod": "3.18.0"
   },
   "devDependencies": {
     "@swc/core": "1.2.230",
