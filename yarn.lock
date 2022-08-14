@@ -1165,16 +1165,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/core-tracing@npm:1.0.0-preview.13":
-  version: 1.0.0-preview.13
-  resolution: "@azure/core-tracing@npm:1.0.0-preview.13"
-  dependencies:
-    "@opentelemetry/api": ^1.0.1
-    tslib: ^2.2.0
-  checksum: bc3ea8dce1fc6bb6e4cb2e82ec0c361b3e6f6e18e162f352eb347e6991c6461ebc249f5d1b36402cc0d295e2a6bcbaa68014445d7f4293c0792a698c430f145e
-  languageName: node
-  linkType: hard
-
 "@azure/core-tracing@npm:^1.0.0, @azure/core-tracing@npm:^1.0.1":
   version: 1.0.1
   resolution: "@azure/core-tracing@npm:1.0.1"
@@ -1184,7 +1174,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/core-util@npm:^1.0.0, @azure/core-util@npm:^1.0.0-beta.1":
+"@azure/core-util@npm:^1.0.0":
   version: 1.0.0
   resolution: "@azure/core-util@npm:1.0.0"
   dependencies:
@@ -1193,27 +1183,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/identity@npm:2.0.4":
-  version: 2.0.4
-  resolution: "@azure/identity@npm:2.0.4"
+"@azure/identity@npm:2.1.0":
+  version: 2.1.0
+  resolution: "@azure/identity@npm:2.1.0"
   dependencies:
     "@azure/abort-controller": ^1.0.0
     "@azure/core-auth": ^1.3.0
     "@azure/core-client": ^1.4.0
     "@azure/core-rest-pipeline": ^1.1.0
-    "@azure/core-tracing": 1.0.0-preview.13
-    "@azure/core-util": ^1.0.0-beta.1
+    "@azure/core-tracing": ^1.0.0
+    "@azure/core-util": ^1.0.0
     "@azure/logger": ^1.0.0
-    "@azure/msal-browser": ^2.16.0
-    "@azure/msal-common": ^4.5.1
-    "@azure/msal-node": ^1.3.0
+    "@azure/msal-browser": ^2.26.0
+    "@azure/msal-common": ^7.0.0
+    "@azure/msal-node": ^1.10.0
     events: ^3.0.0
     jws: ^4.0.0
     open: ^8.0.0
     stoppable: ^1.1.0
     tslib: ^2.2.0
     uuid: ^8.3.0
-  checksum: 16da78070f8de1a23d82d1dcff171aba6d43d9a9bde8c90b3e0199bf42511ad53e8086536f5650b313246b96f13e193bb54cbbd818834585b473daed13c7681a
+  checksum: 1f29f1fd46c51f226da06e6e70f113d50f5ef0dd163e2ba1b8bc35cadcf98ccd829bff3d2bf4d90641c369e5d6b74b344f17abec10f2ae9469a74aeb9415d6d4
   languageName: node
   linkType: hard
 
@@ -1226,39 +1216,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/msal-browser@npm:^2.16.0":
-  version: 2.25.0
-  resolution: "@azure/msal-browser@npm:2.25.0"
+"@azure/msal-browser@npm:^2.26.0":
+  version: 2.28.1
+  resolution: "@azure/msal-browser@npm:2.28.1"
   dependencies:
-    "@azure/msal-common": ^6.4.0
-  checksum: c340632f516160e8fefc63cd57baf6faad7a98aab92ac621b213ef49df9100713a2151c0cb05f7a12e507a8607635f77df0515c3ce1a99ea52c3f8344bd8e725
+    "@azure/msal-common": ^7.3.0
+  checksum: 051cdf5ded5664209da7fca30fdad750773027905fa6a75de6711a203dc5eef15cfcad64744ad7b659888f8c0150b2ef759d2d2fa949f9f494fe5d9328e1415b
   languageName: node
   linkType: hard
 
-"@azure/msal-common@npm:^4.5.1":
-  version: 4.5.1
-  resolution: "@azure/msal-common@npm:4.5.1"
-  dependencies:
-    debug: ^4.1.1
-  checksum: 9d335771ea65e08d7610253cce68ac29839c01985bc078e2c5bdd53e76f787b2aab6a4bcc0b548ffdc005490032836ab359d2c8e661f386c8c6c4995fc9cfdfa
+"@azure/msal-common@npm:^7.0.0, @azure/msal-common@npm:^7.3.0":
+  version: 7.3.0
+  resolution: "@azure/msal-common@npm:7.3.0"
+  checksum: 32dd4e3b97af269d6ba1e3432adcba014e51d1b5ecda759bb9c540598132ca7fe328c68deb979a2a44eefaa08dac15bf85f5f589b2a3bca3da3dda0bbe52e057
   languageName: node
   linkType: hard
 
-"@azure/msal-common@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "@azure/msal-common@npm:6.4.0"
-  checksum: 0d85b85162c637c1654db637b48a3318e79cb39df48474e79b08897a5f07292f38449ef9582f972ac1f021ae358a5d1adbad283f532d4e8bdab0ee9e40ef485b
-  languageName: node
-  linkType: hard
-
-"@azure/msal-node@npm:^1.3.0":
-  version: 1.9.1
-  resolution: "@azure/msal-node@npm:1.9.1"
+"@azure/msal-node@npm:^1.10.0":
+  version: 1.12.1
+  resolution: "@azure/msal-node@npm:1.12.1"
   dependencies:
-    "@azure/msal-common": ^6.4.0
+    "@azure/msal-common": ^7.3.0
     jsonwebtoken: ^8.5.1
     uuid: ^8.3.0
-  checksum: 79de356e4e857fdc3b4cfeef2968494c60e9b4252591400752e2a0d33006000325593ad8182cb3da603d8ec172ccea970f5ac727e2634175f87ae84a11f65a6a
+  checksum: 0c89f6a8f2554b40d245a0264eac4a943320f13bbfdc4aa2454e06dba8e11bee29bc7f43d39f8ebdb1b58565f773da6ec3356683453a728bce10cf2337344c51
   languageName: node
   linkType: hard
 
@@ -2099,13 +2080,6 @@ __metadata:
     mkdirp: ^1.0.4
     rimraf: ^3.0.2
   checksum: 1388777b507b0c592d53f41b9d182e1a8de7763bc625fc07999b8edbc22325f074e5b3ec90af79c89d6987fdb2325bc66d59f483258543c14a43661621f841b0
-  languageName: node
-  linkType: hard
-
-"@opentelemetry/api@npm:^1.0.1":
-  version: 1.1.0
-  resolution: "@opentelemetry/api@npm:1.1.0"
-  checksum: 8be8e8dd20a473639a9bb9b4185b8984f537f86e49829ba1d4c4e909f4480309cb22696b7eb7122882878dac0b5f4ce799d66ed72248568bafed085d6269e1bc
   languageName: node
   linkType: hard
 
@@ -4166,7 +4140,7 @@ __metadata:
   dependencies:
     "@actions/core": 1.9.1
     "@aws-sdk/client-s3": 3.145.0
-    "@azure/identity": 2.0.4
+    "@azure/identity": 2.1.0
     "@devgioele/winged": 7.0.6
     "@swc/core": 1.2.230
     "@swc/jest": 0.2.22
