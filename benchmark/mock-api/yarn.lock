@@ -5,7 +5,7 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@azure/functions@npm:^3.0.0":
+"@azure/functions@npm:3.0.0":
   version: 3.0.0
   resolution: "@azure/functions@npm:3.0.0"
   checksum: b87643bb0e1c69c54085f8b45194b07b2d4d7763c3280518946d79c1ece2d44c9831df4b06c55c4d90980b1bfae60192adc2c951bf6aee87d32b29e4c0c0ea31
@@ -158,7 +158,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^17.0.31":
+"@types/node@npm:17.0.31":
   version: 17.0.31
   resolution: "@types/node@npm:17.0.31"
   checksum: 704618350f8420d5c47db0f7778398e821b7724369946f5c441a7e6b9343295553936400eb8309f0b07d5e39c240988ab3456b983712ca86265dabc9aee4ad3d
@@ -188,6 +188,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/parser@npm:5.22.0":
+  version: 5.22.0
+  resolution: "@typescript-eslint/parser@npm:5.22.0"
+  dependencies:
+    "@typescript-eslint/scope-manager": 5.22.0
+    "@typescript-eslint/types": 5.22.0
+    "@typescript-eslint/typescript-estree": 5.22.0
+    debug: ^4.3.2
+  peerDependencies:
+    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 28a7d4b73154fc97336be9a4efd5ffdc659f748232c82479909e86ed87ed8a78d23280b3aaf532ca4e735caaffac43d9576e6af2dfd11865e30a9d70c8a3f275
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/parser@npm:^5.1.0":
   version: 5.33.0
   resolution: "@typescript-eslint/parser@npm:5.33.0"
@@ -202,23 +219,6 @@ __metadata:
     typescript:
       optional: true
   checksum: 2617aba987a70ee6b16ecc6afa6d245422df33a9d056018ff2e316159e667a0ab9d9c15fcea95e0ba65832661e71cc2753a221e77f0b0fab278e52c4497b8278
-  languageName: node
-  linkType: hard
-
-"@typescript-eslint/parser@npm:^5.22.0":
-  version: 5.22.0
-  resolution: "@typescript-eslint/parser@npm:5.22.0"
-  dependencies:
-    "@typescript-eslint/scope-manager": 5.22.0
-    "@typescript-eslint/types": 5.22.0
-    "@typescript-eslint/typescript-estree": 5.22.0
-    debug: ^4.3.2
-  peerDependencies:
-    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 28a7d4b73154fc97336be9a4efd5ffdc659f748232c82479909e86ed87ed8a78d23280b3aaf532ca4e735caaffac43d9576e6af2dfd11865e30a9d70c8a3f275
   languageName: node
   linkType: hard
 
@@ -865,7 +865,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-github@npm:^4.3.7":
+"eslint-plugin-github@npm:4.3.7":
   version: 4.3.7
   resolution: "eslint-plugin-github@npm:4.3.7"
   dependencies:
@@ -924,7 +924,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:^26.1.5":
+"eslint-plugin-jest@npm:26.1.5":
   version: 26.1.5
   resolution: "eslint-plugin-jest@npm:26.1.5"
   dependencies:
@@ -2072,15 +2072,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@azure/functions": ^3.0.0
-    "@types/node": ^17.0.31
-    "@typescript-eslint/parser": ^5.22.0
+    "@azure/functions": 3.0.0
+    "@types/node": 17.0.31
+    "@typescript-eslint/parser": 5.22.0
     eslint: 8.22.0
-    eslint-plugin-github: ^4.3.7
-    eslint-plugin-jest: ^26.1.5
+    eslint-plugin-github: 4.3.7
+    eslint-plugin-jest: 26.1.5
     eslint-plugin-prettier: 4.2.1
     prettier: 2.7.1
-    ts-node: ^10.7.0
+    ts-node: 10.7.0
     typescript: 4.7.4
   languageName: unknown
   linkType: soft
@@ -2232,7 +2232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.7.0":
+"ts-node@npm:10.7.0":
   version: 10.7.0
   resolution: "ts-node@npm:10.7.0"
   dependencies:
