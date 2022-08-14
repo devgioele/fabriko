@@ -1,6 +1,6 @@
 {
   "name": "fabriko",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Management of user permissions and Mapbox accounts for geographic information systems",
   "main": "src/index.ts",
   "scripts": {
