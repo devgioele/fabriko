@@ -5,10 +5,10 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@azure/functions@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@azure/functions@npm:3.0.0"
-  checksum: b87643bb0e1c69c54085f8b45194b07b2d4d7763c3280518946d79c1ece2d44c9831df4b06c55c4d90980b1bfae60192adc2c951bf6aee87d32b29e4c0c0ea31
+"@azure/functions@npm:3.2.0":
+  version: 3.2.0
+  resolution: "@azure/functions@npm:3.2.0"
+  checksum: 4e521ee450b4e47555b533e6e21d68141db62de7ba5a10327bdfaa93856f9d7f62197e1cc33359bba6007e3b79dd9d7214cbec23bb036875cbee9687593e8453
   languageName: node
   linkType: hard
 
@@ -2072,7 +2072,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@azure/functions": 3.0.0
+    "@azure/functions": 3.2.0
     "@types/node": 17.0.31
     "@typescript-eslint/parser": 5.33.0
     eslint: 8.22.0
