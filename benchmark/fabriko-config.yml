@@ -4,7 +4,7 @@
 # Assumes the worst case scenario, where
 # all geospatial files are uploaded to each
 # Mapbox account and each Mapbox account matches
-# every possible group, when splitting vector files.
+# every possible group of features.
 
 rotate-mapbox-tokens: true
 group-by:
@@ -17,8 +17,6 @@ gis-files:
       path: 'https://fabriko.blob.core.windows.net/content/raster/t2.geotiff'
     - name: altitude1
       path: 'https://fabriko.blob.core.windows.net/content/raster/dtm1.geotiff'
-    - name: altitude2
-      path: 'https://fabriko.blob.core.windows.net/content/raster/dtm2.geotiff'
   vector:
     - name: plantations1
       path: 'https://fabriko.blob.core.windows.net/content/vector/plantations1.geojsonl'
@@ -26,54 +24,46 @@ gis-files:
       path: 'https://fabriko.blob.core.windows.net/content/vector/plantations2.geojsonl'
     - name: plantations3
       path: 'https://fabriko.blob.core.windows.net/content/vector/plantations3.geojsonl'
-    - name: plantations4
-      path: 'https://fabriko.blob.core.windows.net/content/vector/plantations4.geojsonl'
 mapbox-accounts:
   - username: devgioele
     admin-access-token: ${{ secrets.MAPBOX_ADMIN_DEVGIOELE }}
     # Match all groups
-    groups-regex: .*
+    groups-regex: '.*'
     gis-files:
       raster:
         - temperature1
         - temperature2
         - altitude1
-        - altitude2
       vector:
         - plantations1
         - plantations2
         - plantations3
-        - plantations4
   - username: devgioele2
     admin-access-token: ${{ secrets.MAPBOX_ADMIN_DEVGIOELE2 }}
     # Match all groups
-    groups-regex: .*
+    groups-regex: '.*'
     gis-files:
       raster:
         - temperature1
         - temperature2
         - altitude1
-        - altitude2
       vector:
         - plantations1
         - plantations2
         - plantations3
-        - plantations4
   - username: devgioele3
     admin-access-token: ${{ secrets.MAPBOX_ADMIN_DEVGIOELE3 }}
     # Match all groups
-    groups-regex: .*
+    groups-regex: '.*'
     gis-files:
       raster:
         - temperature1
         - temperature2
         - altitude1
-        - altitude2
       vector:
         - plantations1
         - plantations2
         - plantations3
-        - plantations4
 permissions:
   - id: apple.nicoter-kanzi
     description: Gives access to the Nicoter Kanzi apple
@@ -82,20 +72,20 @@ permissions:
 roles:
   - id: role1
     description: User role 1
-    users-regex: .*@role1\\.eu
+    users-regex: '.*@role1\\.eu'
     mapbox-account: devgioele
     permissions:
       - apple.nicoter-kanzi
       - apple.scilate-envy
   - id: role2
     description: User role 2
-    users-regex: test2@gmail\\.com
+    users-regex: 'test2@gmail\\.com'
     mapbox-account: devgioele2
     permissions:
       - apple.nicoter-kanzi
   - id: role3
     description: User role 3
-    users-regex: test3@gmail\\.com
+    users-regex: 'test3@gmail\\.com'
     mapbox-account: devgioele3
     permissions:
       - apple.nicoter-kanzi
