@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-figure = plt.figure(figsize=(18, 10), dpi=200)
+figure = plt.figure(figsize=(8, 8))
 figure.tight_layout() # pad=0, w_pad=0, h_pad=0
 subplots = [
     figure.add_subplot(2, 2, 1, projection='3d'),
@@ -44,6 +44,8 @@ data = [
     [152, 155, 166]
 ]]
 
+durationSum = 0
+
 # Generate a plot for each role
 for index, rolesMatrix in enumerate(data):
     roles = index + 1
@@ -53,9 +55,16 @@ for index, rolesMatrix in enumerate(data):
     subplot.yaxis.get_major_locator().set_params(integer=True)
     subplot.zaxis.get_major_locator().set_params(integer=True)
     # Take data
+    # - number of raster files
     x = np.repeat(np.arange(1, 4), len(rolesMatrix))
+    # - number of vector files
     y = np.resize(np.arange(1, 4), len(rolesMatrix) * len(rolesMatrix[0]))
-    dz = [w for rasterArray in rolesMatrix for w in rasterArray]
+    # - execution duration in seconds
+    dz = []
+    for rasterArray in rolesMatrix:
+        for w in rasterArray:
+            dz.append(w)
+            durationSum += w
     # Let each bar touch the ground
     z = np.zeros_like(x)
     # Make each bar smaller such that there is space in between
@@ -73,9 +82,14 @@ for index, rolesMatrix in enumerate(data):
     subplot.bar3d(x, y, z, dx, dy, dz, shade=True, color='#008233')
     subplot.set_zlim((0, 400))
     subplot.view_init(15, -66)
-    subplot.set_title(str(roles) + ' Role' + ('' if roles == 1 else 's'))
+    subplot.set_title('Number of roles: ' + str(roles))
     subplot.set_xlabel('Raster Files')
     subplot.set_ylabel('Vector Files')
     subplot.set_zlabel('Duration [s]')
 
+# Compute average
+avg = durationSum / (9 * 3)
+print("Average duration = " + str(avg) + "s")
+
+plt.savefig(fname="benchmark.png", dpi=400)
 plt.show()
