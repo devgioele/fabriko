@@ -1,6 +1,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+def mean(list):
+    return sum(durations) / len(durations)
+
+def median(list):
+    n = len(list)
+    if n == 0:
+        raise Exception("The median is undefined for empty lists.")
+    if n % 2 == 1:
+        return list[n//2]
+    return (list[n//2-1] + list[n//2]) / 2
+
 figure = plt.figure(figsize=(8, 8))
 figure.tight_layout() # pad=0, w_pad=0, h_pad=0
 subplots = [
@@ -44,7 +55,7 @@ data = [
     [152, 155, 166]
 ]]
 
-durationSum = 0
+durations = []
 
 # Generate a plot for each role
 for index, rolesMatrix in enumerate(data):
@@ -64,7 +75,7 @@ for index, rolesMatrix in enumerate(data):
     for rasterArray in rolesMatrix:
         for w in rasterArray:
             dz.append(w)
-            durationSum += w
+            durations.append(w)
     # Let each bar touch the ground
     z = np.zeros_like(x)
     # Make each bar smaller such that there is space in between
@@ -87,9 +98,9 @@ for index, rolesMatrix in enumerate(data):
     subplot.set_ylabel('Vector Files')
     subplot.set_zlabel('Duration [s]')
 
-# Compute average
-avg = durationSum / (9 * 3)
-print("Average duration = " + str(avg) + "s")
+# Statistics
+print("Mean duration = " + str(mean(durations)) + "s")
+print("Median duration = " + str(median(durations)) + "s")
 
 plt.savefig(fname="benchmark.png", dpi=400)
 plt.show()
