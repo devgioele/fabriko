@@ -67,20 +67,19 @@ The `.secrets` file is a [.env](https://www.dotenv.org/env) file placed in the r
 
 Actions are run from GitHub repos so we will checkin the packed dist folder.
 
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
+Build the source code, create a new tag and push it.
 
-```bash
-$ yarn build
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
+```sh
+yarn build
+git add dist
+git commit -m "<MESSAGE>"
+git push
+git tag v<VERSION_NUMBER>
+git push --tags
 ```
 
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
+_Note: Replace `<MESSAGE>` and `<VERSION_NUMBER>` with values that make sense for your scenario._
 
-Your action is now published! :rocket:
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
 
 ## Benchmarking
 
