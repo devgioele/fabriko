@@ -12,7 +12,7 @@ def median(list):
         return list[n//2]
     return (list[n//2-1] + list[n//2]) / 2
 
-figure = plt.figure(figsize=(8, 8))
+figure = plt.figure(figsize=(10.5, 9))
 figure.tight_layout() # pad=0, w_pad=0, h_pad=0
 subplots = [
     figure.add_subplot(2, 2, 1, projection='3d'),
@@ -93,14 +93,14 @@ for index, rolesMatrix in enumerate(data):
     subplot.bar3d(x, y, z, dx, dy, dz, shade=True, color='#008233')
     subplot.set_zlim((0, 400))
     subplot.view_init(15, -66)
-    subplot.set_title('Number of roles: ' + str(roles))
-    subplot.set_xlabel('Raster Files')
-    subplot.set_ylabel('Vector Files')
+    subplot.set_title('Roles: ' + str(roles), y=0.97)
+    subplot.set_xlabel('Raster files')
+    subplot.set_ylabel('Vector files')
     subplot.set_zlabel('Duration [s]')
 
 # Statistics
-print("Mean duration = " + str(mean(durations)) + "s")
-print("Median duration = " + str(median(durations)) + "s")
+print("Arithmetic mean of duration = " + str(mean(durations)) + "s")
+print("Median of duration = " + str(median(durations)) + "s")
 
 plt.savefig(fname="benchmark.png", dpi=400)
 plt.show()
