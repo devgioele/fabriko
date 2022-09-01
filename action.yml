@@ -1,5 +1,5 @@
 name: Fabriko
-description: Management of user permissions and Mapbox accounts for geographic information systems
+description: A GitHub Action for RBAC of geographic information systems using Mapbox
 author: devgioele
 
 inputs:
