@@ -2,6 +2,10 @@ name: action-fabriko
 description: RBAC of geographic information systems using Mapbox
 author: devgioele
 
+branding:
+  icon: map
+  color: purple
+
 inputs:
   config:
     description: Path to the YAML config file
