@@ -6,7 +6,23 @@
 
 A GitHub Action that manages user permissions and Mapbox accounts for geographic information systems
 
-## Getting started
+## Usage
+
+```
+- name: Run Fabriko
+  uses: devgioele/action-fabriko@v2.4
+  with:
+    config: ./fabriko-config.yml
+    store-base-url: https://example.azurewebsites.net/api
+    azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+    azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
+    azure-client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+    secrets-context: ${{ toJson(secrets) }}
+```
+
+Don't forget to set the required secrets in your GitHub repo. To write the Fabriko config file, see  the [mock config](https://github.com/devgioele/fabriko/blob/main/__tests__/mock-config.yml).
+
+## Contributing
 
 ### Install Node.js
 
