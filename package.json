@@ -7,7 +7,7 @@
     "lint": "eslint '**/*.ts' --cache --fix",
     "test": "jest",
     "build": "rm -rf dist && esbuild src/index.ts --outfile=dist/index.js --bundle --platform=node --target=node16 --minify --sourcemap && cp dist-reuse/* dist/",
-    "dev": "yarn test && yarn build && act -j test-run --secret-file .secrets"
+    "dev": "yarn test && yarn build && act -j benchmark-fabriko-warmup --secret-file .secrets"
   },
   "repository": {
     "type": "git",
