@@ -28,7 +28,7 @@ def flattenIteration(iteration):
 
 def genFigure(iteration, durationTitle, durationMin, durationMax):
     plt.rc('font', size=14)
-    fig = plt.figure(figsize=(8, 7))
+    fig = plt.figure(figsize=(8.5, 7))
     fig.tight_layout()
     nrows = 2
     ncols = 2
