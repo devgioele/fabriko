@@ -72,7 +72,7 @@ def genFigure(iteration, durationTitle, durationMin, durationMax):
         # height of each bar
         subplot.bar3d(x, y, z, dx, dy, dz, shade=True, color='#008233')
         subplot.set_zlim(zmin=durationMin-durationOffset, zmax=durationMax)
-        # subplot.view_init(15, -66)
+        # View angle of histograms
         subplot.view_init(14, -81)
         subplot.set_title('Roles: ' + str(roles), y=0.95)
         subplot.set_xlabel('Raster files')
