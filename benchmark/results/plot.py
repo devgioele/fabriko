@@ -28,7 +28,7 @@ def flattenIteration(iteration):
 
 def genFigure(iteration, durationTitle, durationMin, durationMax):
     plt.rc('font', size=14)
-    fig = plt.figure(figsize=(8.5, 7))
+    fig = plt.figure(figsize=(9, 8))
     fig.tight_layout()
     nrows = 2
     ncols = 2
@@ -79,8 +79,10 @@ def genFigure(iteration, durationTitle, durationMin, durationMax):
         subplot.set_ylabel('Vector files')
         subplot.set_zlabel(durationTitle)
         newLines = durationTitle.count("\n")
-        labelpad = 15 * newLines if newLines > 0 else 10
-        subplot.zaxis.labelpad = labelpad
+        subplot.xaxis.labelpad = 10
+        subplot.yaxis.labelpad = 5
+        zLabelPad = 5 + 15 * newLines if newLines > 0 else 15
+        subplot.zaxis.labelpad = zLabelPad
     fig.subplots_adjust(left=-0.08, bottom=0, right=1, top=1, wspace=0, hspace=0)
     return fig
 
@@ -150,6 +152,13 @@ data = [
     [155, 175, 198]
 ]]]
 
+# Collect durations and compute min and max
+durations = []
+for iteration in data:
+    durations.extend(flattenIteration(iteration))
+durationMin = min(durations)
+durationMax = max(durations)
+
 # Generate a figure that takes the mean of all iterations
 meanIteration = np.zeros_like(data[0])
 for i in range(0, len(data)):
@@ -164,13 +173,6 @@ durationMaxMean = max(durationsMean)
 fig = genFigure(meanIteration, 'Arithmetic mean\nof duration [s]', durationMinMean, durationMaxMean)
 fig.savefig(fname="benchmark.svg")
 fig.savefig(fname="benchmark.pdf")
-
-# Collect durations and compute min and max
-durations = []
-for iteration in data:
-    durations.extend(flattenIteration(iteration))
-durationMin = min(durations)
-durationMax = max(durations)
 
 # Generate a figure for each benchmark iteration
 for index, iteration in enumerate(data):
