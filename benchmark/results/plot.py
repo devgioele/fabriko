@@ -27,12 +27,12 @@ def flattenIteration(iteration):
     return durations
 
 def genFigure(iteration, durationTitle, durationMin, durationMax):
-    figure = plt.figure(figsize=(10.5, 9))
-    figure.tight_layout() # pad=0, w_pad=0, h_pad=0
+    fig = plt.figure(figsize=(8, 7))
+    fig.tight_layout() # pad=0, w_pad=0, h_pad=0
     subplots = [
-        figure.add_subplot(2, 2, 1, projection='3d'),
-        figure.add_subplot(2, 2, 2, projection='3d'),
-        figure.add_subplot(2, 2, (3, 4), projection='3d')
+        fig.add_subplot(2, 2, 1, projection='3d'),
+        fig.add_subplot(2, 2, 2, projection='3d'),
+        fig.add_subplot(2, 2, (3, 4), projection='3d')
     ]
     durationOffset = 15
     # Generate a plot for each role
@@ -71,14 +71,15 @@ def genFigure(iteration, durationTitle, durationMin, durationMax):
         subplot.set_zlim(zmin=durationMin-durationOffset, zmax=durationMax)
         # subplot.view_init(15, -66)
         subplot.view_init(14, -81)
-        subplot.set_title('Roles: ' + str(roles), y=0.97)
+        subplot.set_title('Roles: ' + str(roles), y=0.95)
         subplot.set_xlabel('Raster files')
         subplot.set_ylabel('Vector files')
         subplot.set_zlabel(durationTitle)
         newLines = durationTitle.count("\n")
         labelpad = 15 * newLines if newLines > 0 else 10
         subplot.zaxis.labelpad = labelpad
-    return figure
+    fig.subplots_adjust(left=-0.08, bottom=0, right=1, top=1, wspace=0, hspace=0)
+    return fig
 
 # DATA
 # x = number raster files
@@ -158,7 +159,8 @@ durationsMean = flattenIteration(meanIteration)
 durationMinMean = min(durationsMean)
 durationMaxMean = max(durationsMean)
 fig = genFigure(meanIteration, 'Arithmetic mean\nof duration [s]', durationMinMean, durationMaxMean)
-fig.savefig(fname="benchmark.png", dpi=400)
+fig.savefig(fname="benchmark.svg")
+fig.savefig(fname="benchmark.pdf")
 
 # Collect durations and compute min and max
 durations = []
@@ -171,7 +173,9 @@ durationMax = max(durations)
 for index, iteration in enumerate(data):
     fig = genFigure(iteration, 'Duration [s]', durationMin, durationMax)
     # Save figure
-    fig.savefig(fname="benchmark-iteration-" + str(index+1) + ".png", dpi=400)
+    name = "benchmark-iteration-" + str(index+1)
+    fig.savefig(fname= name + ".svg")
+    fig.savefig(fname= name + ".pdf")
 
 # Statistics
 def roundStats(v):
