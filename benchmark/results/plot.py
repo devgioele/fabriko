@@ -27,12 +27,15 @@ def flattenIteration(iteration):
     return durations
 
 def genFigure(iteration, durationTitle, durationMin, durationMax):
+    plt.rc('font', size=14)
     fig = plt.figure(figsize=(8, 7))
-    fig.tight_layout() # pad=0, w_pad=0, h_pad=0
+    fig.tight_layout()
+    nrows = 2
+    ncols = 2
     subplots = [
-        fig.add_subplot(2, 2, 1, projection='3d'),
-        fig.add_subplot(2, 2, 2, projection='3d'),
-        fig.add_subplot(2, 2, (3, 4), projection='3d')
+        fig.add_subplot(nrows, ncols, 1, projection='3d'),
+        fig.add_subplot(nrows, ncols, 2, projection='3d'),
+        fig.add_subplot(nrows, ncols, (3, 4), projection='3d')
     ]
     durationOffset = 15
     # Generate a plot for each role
