@@ -28,7 +28,7 @@ def flattenIteration(iteration):
 
 def genFigure(iteration, durationTitle, durationMin, durationMax):
     plt.rc('font', size=14)
-    fig = plt.figure(figsize=(9, 8))
+    fig = plt.figure(figsize=(9, 8), dpi=400)
     fig.tight_layout()
     nrows = 2
     ncols = 2
@@ -173,6 +173,7 @@ durationMaxMean = max(durationsMean)
 fig = genFigure(meanIteration, 'Arithmetic mean\nof duration [s]', durationMinMean, durationMaxMean)
 fig.savefig(fname="benchmark.svg")
 fig.savefig(fname="benchmark.pdf")
+fig.savefig(fname="benchmark.png")
 
 # Generate a figure for each benchmark iteration
 for index, iteration in enumerate(data):
@@ -181,6 +182,7 @@ for index, iteration in enumerate(data):
     name = "benchmark-iteration-" + str(index+1)
     fig.savefig(fname= name + ".svg")
     fig.savefig(fname= name + ".pdf")
+    fig.savefig(fname= name + ".png")
 
 # Statistics
 def roundStats(v):
