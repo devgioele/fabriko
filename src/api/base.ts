@@ -1,5 +1,5 @@
 import type { AxiosRequestConfig, ResponseType } from 'axios'
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import * as core from '@actions/core'
 
 axios.interceptors.request.use(
@@ -45,7 +45,7 @@ axios.interceptors.response.use(
     return response
   },
   error => {
-    if (error instanceof AxiosError) {
+    if (axios.isAxiosError(error)) {
       const { method, url, responseType } = error.config
       const response = error?.response
       const msg = `${method?.toUpperCase()} request to '${url}' failed with status code ${
