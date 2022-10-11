@@ -4,7 +4,7 @@ specifiers:
   '@actions/core': 1.10.0
   '@aws-sdk/client-s3': 3.186.0
   '@azure/identity': 3.0.0
-  '@devgioele/winged': 7.0.6
+  '@devgioele/winged': 7.0.10
   '@swc/core': 1.3.6
   '@swc/jest': 0.2.23
   '@types/jest': 29.1.2
@@ -29,7 +29,7 @@ dependencies:
   '@actions/core': 1.10.0
   '@aws-sdk/client-s3': 3.186.0
   '@azure/identity': 3.0.0
-  '@devgioele/winged': 7.0.6
+  '@devgioele/winged': 7.0.10
   '@types/lodash': 4.14.186
   axios: 1.1.2
   lodash: 4.17.21
@@ -1414,8 +1414,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@devgioele/winged/7.0.6:
-    resolution: {integrity: sha512-p2SIRgWH1JZ8ZhVhevdICzWXzau+KnKjYi5Gy34+G0DPAyPvClzcN56ZFHs3DNTtFflUouixsWP3tTVvpEVGdQ==}
+  /@devgioele/winged/7.0.10:
+    resolution: {integrity: sha512-flEvW68aMQ3Qd5ZlahhBw5E3oDLj34ydvWHitWLkd8ga0UwJYknlbK2HgAOa0fY+nivM7XXW/i1HR7P5akA1tg==}
     dependencies:
       '@types/geojson': 7946.0.10
     dev: false
