@@ -1170,9 +1170,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@azure/identity@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@azure/identity@npm:2.1.0"
+"@azure/identity@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@azure/identity@npm:3.0.0"
   dependencies:
     "@azure/abort-controller": ^1.0.0
     "@azure/core-auth": ^1.3.0
@@ -1190,7 +1190,7 @@ __metadata:
     stoppable: ^1.1.0
     tslib: ^2.2.0
     uuid: ^8.3.0
-  checksum: 1f29f1fd46c51f226da06e6e70f113d50f5ef0dd163e2ba1b8bc35cadcf98ccd829bff3d2bf4d90641c369e5d6b74b344f17abec10f2ae9469a74aeb9415d6d4
+  checksum: 1af675d6082d86d6325aa4db5e1e75aa730ec5f39e490e94236dc043908191bac9ccbaa0a7491a41678d07101082d0de0b7f415131d471ba47b1fef0b608fc1b
   languageName: node
   linkType: hard
 
@@ -4103,7 +4103,7 @@ __metadata:
   dependencies:
     "@actions/core": 1.10.0
     "@aws-sdk/client-s3": 3.186.0
-    "@azure/identity": 2.1.0
+    "@azure/identity": 3.0.0
     "@devgioele/winged": 7.0.6
     "@swc/core": 1.3.6
     "@swc/jest": 0.2.23
