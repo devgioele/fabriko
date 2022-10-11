@@ -1,5 +1,4 @@
 import * as path from 'path'
-import { test, expect } from '@jest/globals'
 import { parseConfig } from '../src/input'
 
 test('load config', () => {
