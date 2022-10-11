@@ -37,13 +37,13 @@ corepack enable
 ### Install dependencies
 
 ```sh
-yarn
+pnpm install
 ```
 
 ### Test and build package
 
 ```sh
-yarn test && yarn build
+pnpm test && pnpm build
 ```
 
 ## Notes
@@ -72,7 +72,7 @@ _Note: This does not currently work. Follow [the related GitHub issue](https://g
 2. Test, package and run the GitHub Action:
 
 ```sh
-yarn dev
+pnpm dev
 ```
 
 ### Using secrets locally
@@ -86,7 +86,7 @@ Actions are run from GitHub repos so we will checkin the packed dist folder.
 Build the source code, create a new tag and push it.
 
 ```sh
-yarn build
+pnpm build
 git add dist
 git commit -m "<MESSAGE>"
 git push
@@ -121,7 +121,7 @@ Run the following inside the mock-api directory.
 
 Build the Azure Functions project:
 ```
-yarn build
+pnpm build
 ```
 Deploy the Azure Functions project:
 ```

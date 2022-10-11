@@ -48,7 +48,7 @@ nvm use system
 To host the functions locally, run:
 
 ```sh
-yarn dev
+pnpm dev
 ```
 
 ### Create a new function

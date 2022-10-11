@@ -18,27 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
         with:
-          fetch-depth: 0
+          version: latest
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: corepack enable
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
-      - name: Restore yarn cache
-        uses: actions/cache@v3
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: yarn-cache-folder-${{ hashFiles('**/yarn.lock', '.yarnrc.yml') }}
-          restore-keys: |
-            yarn-cache-folder-
-      - name: Fetch and link dependencies
-        run: yarn
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
       - name: Lint, test, build
         run: |
-          yarn lint
-          yarn test
-          yarn build
+          pnpm lint
+          pnpm test
+          pnpm build
