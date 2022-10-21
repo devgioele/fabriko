@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@actions/core': 1.10.0
-  '@aws-sdk/client-s3': 3.193.0
+  '@aws-sdk/client-s3': 3.194.0
   '@azure/identity': 3.0.0
   '@devgioele/winged': 7.0.10
   '@swc/core': 1.3.10
@@ -27,7 +27,7 @@ specifiers:
 
 dependencies:
   '@actions/core': 1.10.0
-  '@aws-sdk/client-s3': 3.193.0
+  '@aws-sdk/client-s3': 3.194.0
   '@azure/identity': 3.0.0
   '@devgioele/winged': 7.0.10
   '@types/lodash': 4.14.186
@@ -164,14 +164,14 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@aws-sdk/client-s3/3.193.0:
-    resolution: {integrity: sha512-I5X71P9RtqIt9GDaerOMtmlE11Qr3GzOTwz07UJSvDUM9JDyLKUJNI+AN/MRfZ9hnxntdnBOCX0pEGGUkteRRg==}
+  /@aws-sdk/client-s3/3.194.0:
+    resolution: {integrity: sha512-vrC5Pj15T3jgErEOViNObaLpFBtjWk4YKs/P2HqkcQciXjikyafoUMx8GOb5edJbDlCnZSvdjJxIQT0V21fFUw==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@aws-crypto/sha1-browser': 2.0.0
       '@aws-crypto/sha256-browser': 2.0.0
       '@aws-crypto/sha256-js': 2.0.0
-      '@aws-sdk/client-sts': 3.193.0
+      '@aws-sdk/client-sts': 3.194.0
       '@aws-sdk/config-resolver': 3.193.0
       '@aws-sdk/credential-provider-node': 3.193.0
       '@aws-sdk/eventstream-serde-browser': 3.193.0
@@ -212,7 +212,7 @@ packages:
       '@aws-sdk/util-body-length-node': 3.188.0
       '@aws-sdk/util-defaults-mode-browser': 3.193.0
       '@aws-sdk/util-defaults-mode-node': 3.193.0
-      '@aws-sdk/util-endpoints': 3.193.0
+      '@aws-sdk/util-endpoints': 3.194.0
       '@aws-sdk/util-stream-browser': 3.193.0
       '@aws-sdk/util-stream-node': 3.193.0
       '@aws-sdk/util-user-agent-browser': 3.193.0
@@ -267,8 +267,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sts/3.193.0:
-    resolution: {integrity: sha512-IZiJR13pvubHXibpFq7ACDZLrP6WFtKDC/mxhyTSAsehyJq0IaRj7ApMdOIfySo6dUJv64Q+6E+ScR0Mx7+/aA==}
+  /@aws-sdk/client-sts/3.194.0:
+    resolution: {integrity: sha512-duolI7KLvRLMrL0ZpiVvmhaC5stKcNp5tfJ7gUW24tyf+7ImAmk2odSMIgcq54EWQ3XppTKBhEGCjOJ9th7+Qg==}
     engines: {node: '>=12.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 2.0.0
@@ -279,6 +279,7 @@ packages:
       '@aws-sdk/hash-node': 3.193.0
       '@aws-sdk/invalid-dependency': 3.193.0
       '@aws-sdk/middleware-content-length': 3.193.0
+      '@aws-sdk/middleware-endpoint': 3.193.0
       '@aws-sdk/middleware-host-header': 3.193.0
       '@aws-sdk/middleware-logger': 3.193.0
       '@aws-sdk/middleware-recursion-detection': 3.193.0
@@ -300,6 +301,7 @@ packages:
       '@aws-sdk/util-body-length-node': 3.188.0
       '@aws-sdk/util-defaults-mode-browser': 3.193.0
       '@aws-sdk/util-defaults-mode-node': 3.193.0
+      '@aws-sdk/util-endpoints': 3.194.0
       '@aws-sdk/util-user-agent-browser': 3.193.0
       '@aws-sdk/util-user-agent-node': 3.193.0
       '@aws-sdk/util-utf8-browser': 3.188.0
@@ -866,8 +868,8 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /@aws-sdk/util-endpoints/3.193.0:
-    resolution: {integrity: sha512-DiYqsNM7CpZPsMlQgoulbZ21IgvLvUaVnybyZDKEctWrtHJyIajK4a0eDOAmNCQ/urzIGQNvXl7I0kKx2DYMWg==}
+  /@aws-sdk/util-endpoints/3.194.0:
+    resolution: {integrity: sha512-G+DGC3Zx0GnQpt4DpRmVcCfliNxf3nwBtZ3JIdCptkUZgDEpLYzOfjbf3bUyPTQh+oGHeqfnVAF+rFjTnYql3A==}
     engines: {node: '>= 12.0.0'}
     dependencies:
       '@aws-sdk/types': 3.193.0
