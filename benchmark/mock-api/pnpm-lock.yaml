@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@azure/functions': 3.2.0
+  '@azure/functions': 3.5.0
   '@types/node': 17.0.31
   '@typescript-eslint/parser': 5.45.1
   eslint: 8.29.0
@@ -13,7 +13,7 @@ specifiers:
   typescript: 4.9.3
 
 devDependencies:
-  '@azure/functions': 3.2.0
+  '@azure/functions': 3.5.0
   '@types/node': 17.0.31
   '@typescript-eslint/parser': 5.45.1_s5ps7njkmjlaqajutnox5ntcla
   eslint: 8.29.0
@@ -26,8 +26,12 @@ devDependencies:
 
 packages:
 
-  /@azure/functions/3.2.0:
-    resolution: {integrity: sha512-HbE7iORnYcjLzKNf5mIQRJQDTsVxhoXHRWEZ6KWdGh4e7+F9xTloiBicavbSoVmlAYivenIVpryHanVwsQaHUw==}
+  /@azure/functions/3.5.0:
+    resolution: {integrity: sha512-RBYGdZIPYT17UPGBcXI9DPlpaEOO5D8r7pDpJsm/2N5eVrpqIRO8VZuoIiZiEQWV0LO3BZNzlvdS87pzBUBJzQ==}
+    dependencies:
+      iconv-lite: 0.6.3
+      long: 4.0.0
+      uuid: 8.3.2
     dev: true
 
   /@babel/runtime-corejs3/7.20.6:
@@ -1200,6 +1204,13 @@ packages:
       function-bind: 1.1.1
     dev: true
 
+  /iconv-lite/0.6.3:
+    resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      safer-buffer: 2.1.2
+    dev: true
+
   /ignore/5.2.1:
     resolution: {integrity: sha512-d2qQLzTJ9WxQftPAuEQpSPmKqzxePjzVbpAVv62AQ64NTL+wR4JkrVqR/LqFsFEUsHDAiId52mJteHDFuDkElA==}
     engines: {node: '>= 4'}
@@ -1419,6 +1430,10 @@ packages:
 
   /lodash.upperfirst/4.3.1:
     resolution: {integrity: sha512-sReKOYJIJf74dhJONhU4e0/shzi1trVbSWDOhKYE5XV2O+H7Sb2Dihwuc7xWxVl+DgFPyTqIN3zMfT9cq5iWDg==}
+    dev: true
+
+  /long/4.0.0:
+    resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}
     dev: true
 
   /lru-cache/6.0.0:
@@ -1664,6 +1679,10 @@ packages:
       is-regex: 1.1.4
     dev: true
 
+  /safer-buffer/2.1.2:
+    resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+    dev: true
+
   /semver/6.3.0:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
@@ -1858,6 +1877,11 @@ packages:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
       punycode: 2.1.1
+    dev: true
+
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
     dev: true
 
   /v8-compile-cache-lib/3.0.1:
