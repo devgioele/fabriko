@@ -5,7 +5,7 @@ specifiers:
   '@types/node': 17.0.31
   '@typescript-eslint/parser': 5.45.1
   eslint: 8.29.0
-  eslint-plugin-github: 4.4.1
+  eslint-plugin-github: 4.6.0
   eslint-plugin-jest: 27.1.6
   eslint-plugin-prettier: 4.2.1
   prettier: 2.8.0
@@ -17,7 +17,7 @@ devDependencies:
   '@types/node': 17.0.31
   '@typescript-eslint/parser': 5.45.1_s5ps7njkmjlaqajutnox5ntcla
   eslint: 8.29.0
-  eslint-plugin-github: 4.4.1_s5ps7njkmjlaqajutnox5ntcla
+  eslint-plugin-github: 4.6.0_s5ps7njkmjlaqajutnox5ntcla
   eslint-plugin-jest: 27.1.6_s5ps7njkmjlaqajutnox5ntcla
   eslint-plugin-prettier: 4.2.1_yz7jvh5l5mgl5xhpwlgtkgcccy
   prettier: 2.8.0
@@ -741,8 +741,8 @@ packages:
       lodash.upperfirst: 4.3.1
     dev: true
 
-  /eslint-plugin-github/4.4.1_s5ps7njkmjlaqajutnox5ntcla:
-    resolution: {integrity: sha512-wpxUIPw+EK5bdUssB8W5Z9/tapZptfJuLkThwPY8p52v75MV/Fb1AkCrLGlYO0yi3mQGFoa3uE0NMzssVAFrUw==}
+  /eslint-plugin-github/4.6.0_s5ps7njkmjlaqajutnox5ntcla:
+    resolution: {integrity: sha512-6VMH3wLUPEnV/0VuV3f0F74LF93N522Ht9KBYWDuPWKhr1NBzCqySIbQsxjPINIynoLtsErSc/YgICrocCc2zw==}
     hasBin: true
     peerDependencies:
       eslint: ^8.0.1
