@@ -2,19 +2,19 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/azurerm" {
-  version     = "3.35.0"
-  constraints = "3.35.0"
+  version     = "3.36.0"
+  constraints = "3.36.0"
   hashes = [
-    "h1:/1kW16vUiQxTU0gQexK1+nIj99z6sz8wIDVy0vpSznI=",
-    "h1:28R7hsn3KUC6O12/SxghClW4gGi4LFBGKSDzPmUoPj0=",
-    "h1:2uFntREUBKtu2NoF4WhCQ+wl+ucirJw33eyxX1cukQU=",
-    "h1:7rO+enaOW3hsSQtjITv6yLgc18UtfKdKBIkq23xjP1U=",
-    "h1:Q0uJw0MUDjQuo5P3qCk6JVbuxjalkmXw/ybexs9/xjA=",
-    "h1:UgjTFMinFpuXO3brreeB8B0ZucSaPyeHdPAgUqHTANs=",
-    "h1:cW4KsG9jD9yl9Cu2duYssVYIzEI+ULxAUiO/BN1X70c=",
-    "h1:l5yZGJwao1Lxk+fFv2RjdJ/jpg1t4exksv3tDFVeEE4=",
-    "h1:qrCWfGSBpTIJeLtAi/MauXuLeCO3GzOqe7dhsIp/3Bc=",
-    "h1:teqqR7tqu0hUHrMuRwky2K9RggqRuBcOpRIrT1kjsy8=",
-    "h1:xqHUCD5CkRzVuQ7o5n2k8DPowD5T3ykUtHFJuLVyvEQ=",
+    "h1:5QKOFigw44W3w/HfV8o+k8+UyhAXf+4E7MPh14C3Gbg=",
+    "h1:6AYIwsT1k6U4rHMbp7urAxcObNpEknDqaVyxDVER1Kg=",
+    "h1:FUwQUSs5nWDpP5isF3SiTPe+K927/L07yXumr6gQ1GQ=",
+    "h1:FsLIf0HeFJ0ZQK4k8M8vTK8kNYN6NPDhSygnx50NrM4=",
+    "h1:OCM2bgp33iJu7eW7zkKxyQVPaFBQIBdYvFD1Xj3tVAA=",
+    "h1:W7oq9M6gplv2g8nHFR3lkwBmVaUxWj289eWNwwe0wek=",
+    "h1:WnUQTE+X5Uj8wvkJzxr1l2Z0tr/bw0sN7KYixiI2xF8=",
+    "h1:YVGwQsb6LDFCS94h3wMWSG4ydisdY1rzQnJIIqJuQzU=",
+    "h1:iVUkJ0kqVTdiU4RLU8TjX1QgOK1tc+Bi+rn0qGqsMvg=",
+    "h1:o8aHcAMUsOZP7E9uJJaI0uTMccyQoCq3X6YkloMNT0I=",
+    "h1:wfjx79bHUP2u9m88pJ2qwh03WOi8vDFOt5bhBm/ZB5I=",
   ]
 }
