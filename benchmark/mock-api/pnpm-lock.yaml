@@ -6,7 +6,7 @@ specifiers:
   '@typescript-eslint/parser': 5.48.0
   eslint: 8.31.0
   eslint-plugin-github: 4.6.0
-  eslint-plugin-jest: 27.2.0
+  eslint-plugin-jest: 27.2.1
   eslint-plugin-prettier: 4.2.1
   prettier: 2.8.1
   ts-node: 10.9.1
@@ -18,7 +18,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
   eslint: 8.31.0
   eslint-plugin-github: 4.6.0_iukboom6ndih5an6iafl45j2fe
-  eslint-plugin-jest: 27.2.0_iukboom6ndih5an6iafl45j2fe
+  eslint-plugin-jest: 27.2.1_iukboom6ndih5an6iafl45j2fe
   eslint-plugin-prettier: 4.2.1_crnjwcwerrbat3mlbmrsoa543e
   prettier: 2.8.1
   ts-node: 10.9.1_edw5nuodpsvgvt5l2dfu4qnm6e
@@ -811,8 +811,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-jest/27.2.0_iukboom6ndih5an6iafl45j2fe:
-    resolution: {integrity: sha512-KGIYtelk4rIhKocxRKUEeX+kJ0ZCab/CiSgS8BMcKD7AY7YxXhlg/d51oF5jq2rOrtuJEDYWRwXD95l6l2vtrA==}
+  /eslint-plugin-jest/27.2.1_iukboom6ndih5an6iafl45j2fe:
+    resolution: {integrity: sha512-l067Uxx7ZT8cO9NJuf+eJHvt6bqJyz2Z29wykyEdz/OtmcELQl2MQGQLX8J94O1cSJWAwUSEvCjwjA7KEK3Hmg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.0.0
