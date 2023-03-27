@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@azure/functions': 3.5.0
+  '@azure/functions': 3.5.1
   '@types/node': 17.0.31
   '@typescript-eslint/parser': 5.56.0
   eslint: 8.36.0
@@ -13,7 +13,7 @@ specifiers:
   typescript: 4.9.5
 
 devDependencies:
-  '@azure/functions': 3.5.0
+  '@azure/functions': 3.5.1
   '@types/node': 17.0.31
   '@typescript-eslint/parser': 5.56.0_vgl77cfdswitgr47lm5swmv43m
   eslint: 8.36.0
@@ -26,8 +26,8 @@ devDependencies:
 
 packages:
 
-  /@azure/functions/3.5.0:
-    resolution: {integrity: sha512-RBYGdZIPYT17UPGBcXI9DPlpaEOO5D8r7pDpJsm/2N5eVrpqIRO8VZuoIiZiEQWV0LO3BZNzlvdS87pzBUBJzQ==}
+  /@azure/functions/3.5.1:
+    resolution: {integrity: sha512-6UltvJiuVpvHSwLcK/Zc6NfUwlkDLOFFx97BHCJzlWNsfiWwzwmTsxJXg4kE/LemKTHxPpfoPE+kOJ8hAdiKFQ==}
     dependencies:
       iconv-lite: 0.6.3
       long: 4.0.0
