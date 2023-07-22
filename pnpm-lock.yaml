@@ -12,8 +12,8 @@ dependencies:
     specifier: 3.374.0
     version: 3.374.0
   '@azure/identity':
-    specifier: 3.2.3
-    version: 3.2.3
+    specifier: 3.2.4
+    version: 3.2.4
   '@devgioele/winged':
     specifier: 7.0.10
     version: 7.0.10
@@ -742,8 +742,8 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@azure/identity@3.2.3:
-    resolution: {integrity: sha512-knIbl7p2i8r3qPsLW2W84esmDPr36RqieLC72OeuqYk4+0TRNthUhWTs655P9S9Pm3TVVxcFsS3Le9SXIWBIFA==}
+  /@azure/identity@3.2.4:
+    resolution: {integrity: sha512-t63oyi2LAn+ZAehYA7SDlhJDd1J0eLO3a21mxTaJcXqKW/tbRbKmo/BeyyTIXbBaoeTFn0xnyQHyomwndTqKUA==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@azure/abort-controller': 1.1.0
