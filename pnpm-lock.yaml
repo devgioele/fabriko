@@ -9,8 +9,8 @@ dependencies:
     specifier: 1.10.1
     version: 1.10.1
   '@aws-sdk/client-s3':
-    specifier: 3.418.0
-    version: 3.418.0
+    specifier: 3.420.0
+    version: 3.420.0
   '@azure/identity':
     specifier: 3.3.0
     version: 3.3.0
@@ -174,8 +174,8 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /@aws-sdk/client-s3@3.418.0:
-    resolution: {integrity: sha512-VdDM9xS84t8W1B2/QJTK6mYVCnf7Hovg8Aum9NHm+bD7F0Ni2NTLVjm8+qq9STi4YSeXAy3Pe+FBUP9Wthw7Iw==}
+  /@aws-sdk/client-s3@3.420.0:
+    resolution: {integrity: sha512-fmU0b8tM8vPCrEW8kNcY2yhFQBGuN4asYUAqybiSpzyF9Xy3Q0diQQE9WmoJVTO+DXB8tOhZZqUC1kxHCUDjww==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha1-browser': 3.0.0
